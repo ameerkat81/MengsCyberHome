@@ -6,6 +6,7 @@ dateStart: "2025.7.3"
 dateEnd: "2025.10.20"
 tags: ["Personal Project", "Prototypes"]
 featured: true
+heroImage: "/images/games/cycle-of-delivery/hero.png"
 ---
 
 Cycle of Delivery is a narrative exploration game where players alternate between two opposing roles — a food delivery worker and the designer of the delivery algorithm. Each character's choices subtly affect the other within the same system.
@@ -27,6 +28,12 @@ Across five acts, players move through a repeating loop. Each character's "Inner
 **Lin** — Age 21–24. Delivery rider.
 
 *"How long can I keep pushing before I crash?"*
+
+![Reference art](/images/games/cycle-of-delivery/01.png)
+![Concept art](/images/games/cycle-of-delivery/02.png)
+![Concept art](/images/games/cycle-of-delivery/03.png)
+![Amanda character](/images/games/cycle-of-delivery/04.png)
+![Lin character](/images/games/cycle-of-delivery/05.png)
 
 ### Five-Act Narrative Structure
 
@@ -64,6 +71,10 @@ Rising tensions lead to riders resisting and protesting against the system's pre
 
 In the final act, Amanda uncovers evidence of exploitation and shares it with Lin.
 
+![Overview](/images/games/cycle-of-delivery/06.jpg)
+![Act 1](/images/games/cycle-of-delivery/07.png)
+![Act 2](/images/games/cycle-of-delivery/08.png)
+
 ### Theme
 
 Behind the platform's efficiency, people are shaped into replaceable units by algorithms.
@@ -76,4 +87,12 @@ ACT 3 (Amanda's part) mainly takes place in Amanda's team's office and the meeti
 
 Players move through the space in first person and piece together the narrative through observation, interaction, and dialogue.
 
-<!-- Gallery images (ACT 3): add in Todo 7 under public/images/games/cycle-of-delivery/ -->
+![ACT 3 office](/images/games/cycle-of-delivery/09.png)
+![ACT 3 office](/images/games/cycle-of-delivery/10.png)
+![ACT 3 office](/images/games/cycle-of-delivery/11.png)
+![ACT 3 office](/images/games/cycle-of-delivery/12.png)
+![ACT 3 office](/images/games/cycle-of-delivery/13.png)
+![ACT 3 office](/images/games/cycle-of-delivery/14.png)
+![ACT 3 office](/images/games/cycle-of-delivery/15.png)
+![ACT 3 office](/images/games/cycle-of-delivery/16.png)
+![ACT 3 office](/images/games/cycle-of-delivery/17.png)

@@ -8,38 +8,49 @@ import PageLayout from '../layouts/PageLayout.astro';
 	description="Game developer and iOS engineer based in Beijing. Personal projects, professional experience, and blog."
 	narrow
 >
-	<section class="hero">
-		<p class="hero__tagline">
-			When writing code,<br />
-			I feel like <strong>Quirrel</strong> &gt;-&lt;
-		</p>
-	</section>
-
 	<section class="intro">
-		<h1>Hi, everyone! I'm Meng.</h1>
-		<p>
-			I'm a game developer and an iOS Engineer living in Beijing.
-		</p>
-		<p>
-			I started my career as an iOS developer at a large tech company, where I worked
-			within a highly structured and efficiency-driven system.
-		</p>
-		<p>
-			As I learned more about myself and the world, I returned to making games—an
-			interest first sparked by an undergraduate project.
-		</p>
-		<p>
-			I'm good at programming and building things. My work includes software
-			development across games and iOS applications, as well as hardware experiments,
-			interactive device design, and narrative design.
-		</p>
-		<p>
-			I enjoy creating worlds and experiences, telling stories of others and of my
-			own, and building physical items with my hands.
-		</p>
-		<p>
-			I still have a lot to learn, and I hope I can grow enough to support my passion!
-		</p>
+		<div class="intro__lead">
+			<div class="intro__aside">
+				<img
+					src="/images/avatar.jpg"
+					alt="Quirrel figurine from Hollow Knight"
+					class="intro__avatar"
+					width="160"
+					height="160"
+					loading="eager"
+				/>
+				<p class="intro__tagline">
+					When writing code,<br />
+					I feel like <strong>Quirrel</strong> &gt;-&lt;
+				</p>
+			</div>
+			<div class="intro__text">
+				<h1>Hi, everyone! I'm Meng.</h1>
+				<p>
+					I'm a game developer and an iOS Engineer living in Beijing.
+				</p>
+				<p>
+					I started my career as an iOS developer at a large tech company, where I worked
+					within a highly structured and efficiency-driven system.
+				</p>
+				<p>
+					As I learned more about myself and the world, I returned to making games—an
+					interest first sparked by an undergraduate project.
+				</p>
+				<p>
+					I'm good at programming and building things. My work includes software
+					development across games and iOS applications, as well as hardware experiments,
+					interactive device design, and narrative design.
+				</p>
+				<p>
+					I enjoy creating worlds and experiences, telling stories of others and of my
+					own, and building physical items with my hands.
+				</p>
+				<p>
+					I still have a lot to learn, and I hope I can grow enough to support my passion!
+				</p>
+			</div>
+		</div>
 	</section>
 
 	<section class="entries" aria-labelledby="entries-heading">
@@ -60,29 +71,60 @@ import PageLayout from '../layouts/PageLayout.astro';
 </PageLayout>
 
 <style>
-	.hero {
-		margin-bottom: var(--space-lg);
+	.intro__lead {
+		display: flex;
+		gap: var(--space-md);
+		align-items: flex-start;
 	}
 
-	.hero__tagline {
-		font-size: 1.125rem;
+	.intro__aside {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: var(--space-sm);
+		flex-shrink: 0;
+		width: 10rem;
+	}
+
+	.intro__avatar {
+		width: 10rem;
+		height: 10rem;
+		object-fit: cover;
+		border-radius: var(--radius);
+		margin: 0;
+	}
+
+	.intro__tagline {
+		font-size: 0.9rem;
 		color: var(--color-text-muted);
 		margin: 0;
-		line-height: 1.7;
+		line-height: 1.5;
+		text-align: center;
 	}
 
-	.hero__tagline strong {
+	.intro__tagline strong {
 		color: var(--color-text);
 		font-weight: 600;
 	}
 
-	.intro h1 {
+	.intro__text h1 {
 		margin-top: 0;
 		margin-bottom: var(--space-md);
 	}
 
-	.intro p:last-child {
+	.intro__text p:last-child {
 		margin-bottom: 0;
+	}
+
+	@media (max-width: 520px) {
+		.intro__lead {
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.intro__text h1 {
+			text-align: center;
+		}
 	}
 
 	.entries h2 {

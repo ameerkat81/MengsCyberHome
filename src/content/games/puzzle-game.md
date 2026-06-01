@@ -6,6 +6,7 @@ dateStart: "2024.3.12"
 dateEnd: "2024.7.14"
 tags: ["Team Project"]
 featured: false
+heroImage: "/images/games/puzzle-game/hero.png"
 ---
 
 The Puzzle Game is a 2D board-style puzzle game where players switch between characters to solve spatial challenges and reach the exit.
@@ -24,6 +25,13 @@ The key is to use fewer steps to solve the puzzles!
     allowfullscreen
   ></iframe>
 </div>
+
+![Level selection](/images/games/puzzle-game/01.png)
+![Gameplay](/images/games/puzzle-game/02.png)
+![Gameplay](/images/games/puzzle-game/03.png)
+![Level selection UI](/images/games/puzzle-game/04.png)
+![Gameplay](/images/games/puzzle-game/05.png)
+![Gameplay](/images/games/puzzle-game/06.png)
 
 **Time:** 2024.3.12 – 2024.7.14  
 **Role:** Programmer, Co-Designer  

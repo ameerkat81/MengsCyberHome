@@ -6,6 +6,7 @@ dateStart: "2026.1.30"
 dateEnd: "2026.2.1"
 tags: ["Team Project", "GGJ 2026 Beijing"]
 featured: false
+heroImage: "/images/games/mask-off/hero.jpg"
 externalLinks:
   - label: "Video"
     url: "https://www.bilibili.com/video/BV1Ps6sByEEp/?share_source=copy_web&vd_source=5a15375dd955021cc3d47f80b6eb734f&t=26"

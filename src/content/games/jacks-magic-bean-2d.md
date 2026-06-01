@@ -6,6 +6,7 @@ dateStart: "2018.1.5"
 dateEnd: "2018.6.10"
 tags: ["Team Project", "Undergraduate Project"]
 featured: false
+heroImage: "/images/games/jacks-magic-bean-2d/hero.png"
 externalLinks:
   - label: "Video"
     url: "https://www.bilibili.com/video/BV1VW411N7AJ/"

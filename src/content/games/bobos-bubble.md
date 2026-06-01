@@ -6,6 +6,7 @@ dateStart: "2025.1.18"
 dateEnd: "2025.1.19"
 tags: ["Team Project", "GGJ 2025 Beijing"]
 featured: false
+heroImage: "/images/games/bobos-bubble/hero.jpg"
 externalLinks:
   - label: "GGJ Site"
     url: "https://globalgamejam.org/games/2025/bobos-bubble-7"
