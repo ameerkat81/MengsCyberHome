@@ -1,0 +1,65 @@
+---
+import '../styles/global.css';
+import Nav from './Nav.astro';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = 'XueMeng Geng - Game Developer',
+	description = 'Game developer and iOS engineer based in Beijing.',
+} = Astro.props;
+
+const pageTitle =
+	title === 'XueMeng Geng - Game Developer'
+		? title
+		: `${title} | XueMeng Geng`;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content={description} />
+		<meta name="generator" content={Astro.generator} />
+		<title>{pageTitle}</title>
+	</head>
+	<body>
+		<Nav />
+		<main>
+			<slot />
+		</main>
+		<footer class="site-footer">
+			<div class="container">
+				<p>
+					Contact: <a href="mailto:ameerkat81@gmail.com">ameerkat81@gmail.com</a>
+				</p>
+			</div>
+		</footer>
+	</body>
+</html>
+
+<style>
+	main {
+		min-height: calc(100vh - 120px);
+		padding: var(--space-lg) 0 var(--space-xl);
+	}
+
+	.site-footer {
+		border-top: 1px solid var(--color-border);
+		padding: var(--space-md) 0;
+		background: var(--color-surface);
+	}
+
+	.site-footer p {
+		margin: 0;
+		font-size: 0.875rem;
+		color: var(--color-text-muted);
+		text-align: center;
+	}
+</style>

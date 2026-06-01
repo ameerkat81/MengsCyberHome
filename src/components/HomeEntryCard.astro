@@ -1,0 +1,61 @@
+---
+interface Props {
+	href: string;
+	title: string;
+	description: string;
+}
+
+const { href, title, description } = Astro.props;
+---
+
+<a href={href} class="entry-card">
+	<span class="entry-card__title">{title}</span>
+	<span class="entry-card__desc">{description}</span>
+	<span class="entry-card__arrow" aria-hidden="true">→</span>
+</a>
+
+<style>
+	.entry-card {
+		display: block;
+		padding: var(--space-md);
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius);
+		text-decoration: none;
+		color: inherit;
+		transition: border-color 0.15s ease, box-shadow 0.15s ease;
+	}
+
+	.entry-card:hover {
+		border-color: var(--color-accent);
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+		text-decoration: none;
+		color: inherit;
+	}
+
+	.entry-card__title {
+		display: block;
+		font-weight: 600;
+		font-size: 1.125rem;
+		margin-bottom: var(--space-xs);
+		color: var(--color-text);
+	}
+
+	.entry-card:hover .entry-card__title {
+		color: var(--color-accent);
+	}
+
+	.entry-card__desc {
+		display: block;
+		font-size: 0.9rem;
+		color: var(--color-text-muted);
+		line-height: 1.5;
+	}
+
+	.entry-card__arrow {
+		display: inline-block;
+		margin-top: var(--space-sm);
+		color: var(--color-accent);
+		font-size: 1.25rem;
+	}
+</style>

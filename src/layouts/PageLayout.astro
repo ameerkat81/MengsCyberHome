@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+
+interface Props {
+	title: string;
+	description?: string;
+	narrow?: boolean;
+}
+
+const { title, description, narrow = false } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+	<div class:list={['container', { 'container--narrow': narrow }]}>
+		<slot name="header" />
+		<slot />
+	</div>
+</BaseLayout>

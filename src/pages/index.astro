@@ -1,17 +1,104 @@
 ---
-
+import HomeEntryCard from '../components/HomeEntryCard.astro';
+import PageLayout from '../layouts/PageLayout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<PageLayout
+	title="XueMeng Geng - Game Developer"
+	description="Game developer and iOS engineer based in Beijing. Personal projects, professional experience, and blog."
+	narrow
+>
+	<section class="hero">
+		<p class="hero__tagline">
+			When writing code,<br />
+			I feel like <strong>Quirrel</strong> &gt;-&lt;
+		</p>
+	</section>
+
+	<section class="intro">
+		<h1>Hi, everyone! I'm Meng.</h1>
+		<p>
+			I'm a game developer and an iOS Engineer living in Beijing.
+		</p>
+		<p>
+			I started my career as an iOS developer at a large tech company, where I worked
+			within a highly structured and efficiency-driven system.
+		</p>
+		<p>
+			As I learned more about myself and the world, I returned to making games—an
+			interest first sparked by an undergraduate project.
+		</p>
+		<p>
+			I'm good at programming and building things. My work includes software
+			development across games and iOS applications, as well as hardware experiments,
+			interactive device design, and narrative design.
+		</p>
+		<p>
+			I enjoy creating worlds and experiences, telling stories of others and of my
+			own, and building physical items with my hands.
+		</p>
+		<p>
+			I still have a lot to learn, and I hope I can grow enough to support my passion!
+		</p>
+	</section>
+
+	<section class="entries" aria-labelledby="entries-heading">
+		<h2 id="entries-heading">Explore</h2>
+		<div class="entries__grid">
+			<HomeEntryCard
+				href="/projects"
+				title="Game Projects"
+				description="Personal and team games, prototypes, and professional experience."
+			/>
+			<HomeEntryCard
+				href="/blog"
+				title="Blog"
+				description="Diary entries—thoughts on games, code, and life, in Chinese or English."
+			/>
+		</div>
+	</section>
+</PageLayout>
+
+<style>
+	.hero {
+		margin-bottom: var(--space-lg);
+	}
+
+	.hero__tagline {
+		font-size: 1.125rem;
+		color: var(--color-text-muted);
+		margin: 0;
+		line-height: 1.7;
+	}
+
+	.hero__tagline strong {
+		color: var(--color-text);
+		font-weight: 600;
+	}
+
+	.intro h1 {
+		margin-top: 0;
+		margin-bottom: var(--space-md);
+	}
+
+	.intro p:last-child {
+		margin-bottom: 0;
+	}
+
+	.entries h2 {
+		margin-top: var(--space-xl);
+		margin-bottom: var(--space-md);
+		font-size: 1.25rem;
+	}
+
+	.entries__grid {
+		display: grid;
+		gap: var(--space-md);
+	}
+
+	@media (min-width: 520px) {
+		.entries__grid {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+</style>

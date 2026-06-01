@@ -1,0 +1,138 @@
+---
+import { getCollection, render } from 'astro:content';
+import Prose from '../../components/Prose.astro';
+import PageLayout from '../../layouts/PageLayout.astro';
+
+export async function getStaticPaths() {
+	const games = await getCollection('games');
+	return games.map((game) => ({
+		params: { slug: game.data.slug },
+		props: { game },
+	}));
+}
+
+interface Props {
+	game: Awaited<ReturnType<typeof getCollection<'games'>>>[number];
+}
+
+const { game } = Astro.props;
+const { title, summary, dateStart, dateEnd, tags, heroImage, externalLinks } =
+	game.data;
+const period = dateEnd ? `${dateStart} – ${dateEnd}` : dateStart;
+const { Content } = await render(game);
+---
+
+<PageLayout title={title} description={summary} narrow>
+	<nav class="breadcrumb" aria-label="Breadcrumb">
+		<a href="/projects">← Projects</a>
+	</nav>
+
+	<header class="project-header">
+		{
+			heroImage && (
+				<div class="project-header__hero">
+					<img src={heroImage} alt="" loading="eager" />
+				</div>
+			)
+		}
+		<h1>{title}</h1>
+		<p class="project-header__period">{period}</p>
+		{
+			tags.length > 0 && (
+				<ul class="project-header__tags">
+					{tags.map((tag) => (
+						<li>{tag}</li>
+					))}
+				</ul>
+			)
+		}
+		<p class="project-header__summary">{summary}</p>
+		{
+			externalLinks && externalLinks.length > 0 && (
+				<ul class="project-header__links">
+					{externalLinks.map((link) => (
+						<li>
+							<a href={link.url} target="_blank" rel="noopener noreferrer">
+								{link.label} →
+							</a>
+						</li>
+					))}
+				</ul>
+			)
+		}
+	</header>
+
+	<Prose>
+		<Content />
+	</Prose>
+</PageLayout>
+
+<style>
+	.breadcrumb {
+		margin-bottom: var(--space-md);
+		font-size: 0.9rem;
+	}
+
+	.project-header {
+		margin-bottom: var(--space-lg);
+	}
+
+	.project-header__hero {
+		margin: 0 calc(-1 * var(--space-md)) var(--space-md);
+		border-radius: var(--radius);
+		overflow: hidden;
+		background: var(--color-border);
+	}
+
+	.project-header__hero img {
+		width: 100%;
+		max-height: 360px;
+		object-fit: cover;
+	}
+
+	.project-header h1 {
+		margin-top: 0;
+	}
+
+	.project-header__period {
+		margin: 0 0 var(--space-sm);
+		font-size: 0.9rem;
+		color: var(--color-text-muted);
+	}
+
+	.project-header__tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-xs);
+		list-style: none;
+		margin: 0 0 var(--space-sm);
+		padding: 0;
+	}
+
+	.project-header__tags li {
+		font-size: 0.75rem;
+		padding: 0.15rem 0.5rem;
+		background: var(--color-bg);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius);
+		color: var(--color-text-muted);
+	}
+
+	.project-header__summary {
+		font-size: 1.05rem;
+		line-height: 1.6;
+	}
+
+	.project-header__links {
+		list-style: none;
+		margin: var(--space-md) 0 0;
+		padding: 0;
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-md);
+	}
+
+	.project-header__links a {
+		font-weight: 500;
+	}
+</style>

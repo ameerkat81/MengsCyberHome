@@ -1,0 +1,68 @@
+---
+import { render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import Prose from './Prose.astro';
+
+interface Props {
+	entry: CollectionEntry<'experience'>;
+}
+
+const { entry } = Astro.props;
+const { company, role, period, appStoreUrl } = entry.data;
+const { Content } = await render(entry);
+---
+
+<article class="experience">
+	<header class="experience__header">
+		<h3 class="experience__title">
+			{company} — {role}
+		</h3>
+		<p class="experience__period">{period}</p>
+	</header>
+
+	<Prose>
+		<Content />
+	</Prose>
+
+	{
+		appStoreUrl && (
+			<p class="experience__link">
+				<a href={appStoreUrl} target="_blank" rel="noopener noreferrer">
+					App Store →
+				</a>
+			</p>
+		)
+	}
+</article>
+
+<style>
+	.experience {
+		padding-bottom: var(--space-lg);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.experience:last-child {
+		border-bottom: none;
+		padding-bottom: 0;
+	}
+
+	.experience__header {
+		margin-bottom: var(--space-md);
+	}
+
+	.experience__title {
+		margin: 0 0 var(--space-xs);
+		font-size: 1.125rem;
+	}
+
+	.experience__period {
+		margin: 0;
+		font-size: 0.9rem;
+		color: var(--color-text-muted);
+	}
+
+	.experience__link {
+		margin: var(--space-md) 0 0;
+		font-size: 0.9rem;
+	}
+</style>

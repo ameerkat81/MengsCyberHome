@@ -1,0 +1,37 @@
+<div class="prose">
+	<slot />
+</div>
+
+<style>
+	.prose :global(h2:first-child),
+	.prose :global(h3:first-child) {
+		margin-top: 0;
+	}
+
+	.prose :global(h2) {
+		font-size: 1.125rem;
+		margin-top: var(--space-md);
+		margin-bottom: var(--space-sm);
+	}
+
+	.prose :global(h3) {
+		font-size: 1rem;
+		margin-top: var(--space-sm);
+		margin-bottom: var(--space-xs);
+	}
+
+	.prose :global(p:last-child),
+	.prose :global(ul:last-child),
+	.prose :global(ol:last-child) {
+		margin-bottom: 0;
+	}
+
+	.prose :global(pre) {
+		overflow-x: auto;
+		padding: var(--space-sm);
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius);
+		font-size: 0.85rem;
+	}
+</style>

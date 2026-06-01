@@ -1,0 +1,78 @@
+---
+import { getCollection } from 'astro:content';
+import ExperienceItem from '../../components/ExperienceItem.astro';
+import GameCard from '../../components/GameCard.astro';
+import PageLayout from '../../layouts/PageLayout.astro';
+
+const games = (await getCollection('games')).sort((a, b) =>
+	b.data.dateStart.localeCompare(a.data.dateStart),
+);
+
+const experience = (await getCollection('experience')).sort(
+	(a, b) => a.data.order - b.data.order,
+);
+---
+
+<PageLayout title="Projects" description="Game projects and professional experience.">
+	<h1>Game Projects</h1>
+
+	{
+		games.length > 0 ? (
+			<div class="game-grid">
+				{games.map((game) => (
+					<GameCard game={game} />
+				))}
+			</div>
+		) : (
+			<p>No game projects yet.</p>
+		)
+	}
+
+	<section class="experience-section" aria-labelledby="experience-heading">
+		<h2 id="experience-heading">Professional Experience</h2>
+		{
+			experience.length > 0 ? (
+				<div class="experience-list">
+					{experience.map((entry) => (
+						<ExperienceItem entry={entry} />
+					))}
+				</div>
+			) : (
+				<p>No experience entries yet.</p>
+			)
+		}
+	</section>
+</PageLayout>
+
+<style>
+	h1 {
+		margin-top: 0;
+	}
+
+	.game-grid {
+		display: grid;
+		gap: var(--space-md);
+	}
+
+	@media (min-width: 640px) {
+		.game-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	.experience-section {
+		margin-top: var(--space-xl);
+		padding-top: var(--space-lg);
+		border-top: 1px solid var(--color-border);
+	}
+
+	.experience-section h2 {
+		margin-top: 0;
+	}
+
+	.experience-list {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-lg);
+	}
+</style>

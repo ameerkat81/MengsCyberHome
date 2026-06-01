@@ -1,0 +1,108 @@
+---
+import { render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import Prose from './Prose.astro';
+
+interface Props {
+	entry: CollectionEntry<'blog'>;
+}
+
+const { entry } = Astro.props;
+const { title, date } = entry.data;
+const { Content } = await render(entry);
+
+const dateLabel = date.toLocaleDateString('en-CA');
+---
+
+<article class="blog-post">
+	<header class="blog-post__header">
+		<time class="blog-post__date" datetime={dateLabel}>{dateLabel}</time>
+		<h2 class="blog-post__title">{title}</h2>
+	</header>
+
+	<div class="blog-post__content-wrap">
+		<div class="blog-post__body">
+			<Prose>
+				<Content />
+			</Prose>
+		</div>
+		<div class="blog-post__fade" aria-hidden="true"></div>
+	</div>
+
+	<button class="blog-post__toggle" type="button" hidden>
+		展开全文
+	</button>
+</article>
+
+<style>
+	.blog-post {
+		padding-bottom: var(--space-lg);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.blog-post:last-child {
+		border-bottom: none;
+		padding-bottom: 0;
+	}
+
+	.blog-post__header {
+		margin-bottom: var(--space-md);
+	}
+
+	.blog-post__date {
+		display: block;
+		font-size: 0.85rem;
+		color: var(--color-text-muted);
+		margin-bottom: var(--space-xs);
+	}
+
+	.blog-post__title {
+		margin: 0;
+		font-size: 1.25rem;
+	}
+
+	.blog-post__content-wrap {
+		position: relative;
+	}
+
+	.blog-post__body {
+		overflow: hidden;
+	}
+
+	.blog-post__fade {
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		height: 4rem;
+		background: linear-gradient(to bottom, transparent, var(--color-bg));
+		pointer-events: none;
+		opacity: 0;
+		transition: opacity 0.15s ease;
+	}
+
+	.blog-post--collapsible .blog-post__fade {
+		opacity: 1;
+	}
+
+	.blog-post--expanded .blog-post__fade {
+		opacity: 0;
+	}
+
+	.blog-post__toggle {
+		margin-top: var(--space-sm);
+		padding: 0;
+		border: none;
+		background: none;
+		font: inherit;
+		font-size: 0.9rem;
+		color: var(--color-accent);
+		cursor: pointer;
+		text-decoration: underline;
+		text-underline-offset: 2px;
+	}
+
+	.blog-post__toggle:hover {
+		color: var(--color-accent-hover);
+	}
+</style>

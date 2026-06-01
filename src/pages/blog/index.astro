@@ -1,0 +1,83 @@
+---
+import { getCollection } from 'astro:content';
+import BlogPost from '../../components/BlogPost.astro';
+import PageLayout from '../../layouts/PageLayout.astro';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
+---
+
+<PageLayout
+	title="Blog"
+	description="Diary entries on games, code, and life."
+	narrow
+>
+	<h1>Blog</h1>
+
+	{
+		posts.length > 0 ? (
+			<div class="blog-feed">
+				{posts.map((entry) => (
+					<BlogPost entry={entry} />
+				))}
+			</div>
+		) : (
+			<p>No posts yet.</p>
+		)
+	}
+</PageLayout>
+
+<script>
+	const COLLAPSE_MAX_HEIGHT = 480;
+
+	function initBlogPostCollapse() {
+		document.querySelectorAll('.blog-post').forEach((post) => {
+			if (post.dataset.collapseInit === 'true') return;
+			post.dataset.collapseInit = 'true';
+
+			const body = post.querySelector<HTMLElement>('.blog-post__body');
+			const toggle = post.querySelector<HTMLButtonElement>('.blog-post__toggle');
+			if (!body || !toggle) return;
+
+			body.style.maxHeight = `${COLLAPSE_MAX_HEIGHT}px`;
+
+			if (body.scrollHeight <= COLLAPSE_MAX_HEIGHT) {
+				body.style.maxHeight = 'none';
+				toggle.hidden = true;
+				return;
+			}
+
+			post.classList.add('blog-post--collapsible');
+			toggle.hidden = false;
+
+			toggle.addEventListener('click', () => {
+				const expanded = post.classList.toggle('blog-post--expanded');
+				if (expanded) {
+					body.style.maxHeight = 'none';
+					toggle.textContent = '收起';
+				} else {
+					body.style.maxHeight = `${COLLAPSE_MAX_HEIGHT}px`;
+					toggle.textContent = '展开全文';
+					post.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+				}
+			});
+		});
+	}
+
+	initBlogPostCollapse();
+	document.addEventListener('astro:page-load', initBlogPostCollapse);
+</script>
+
+<style>
+	h1 {
+		margin-top: 0;
+		margin-bottom: var(--space-lg);
+	}
+
+	.blog-feed {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-lg);
+	}
+</style>

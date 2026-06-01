@@ -1,0 +1,178 @@
+---
+const navLinks = [
+	{ href: '/projects', label: 'Projects' },
+	{ href: '/blog', label: 'Blog' },
+	{
+		href: 'mailto:ameerkat81@gmail.com',
+		label: 'Contact',
+		mailto: true,
+	},
+	{
+		href: 'https://drive.google.com/file/d/1Ea6szrpEVZOZKr_uSXxXof7r4VVJbqHY/view?usp=mwebsite',
+		label: 'PDF Portfolio',
+		external: true,
+	},
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="nav-header">
+	<nav class="nav container" aria-label="Main navigation">
+		<a href="/" class="nav__brand">XueMeng Geng</a>
+
+		<button
+			class="nav__toggle"
+			type="button"
+			aria-expanded="false"
+			aria-controls="nav-menu"
+			aria-label="Toggle menu"
+		>
+			<span class="nav__toggle-bar"></span>
+			<span class="nav__toggle-bar"></span>
+			<span class="nav__toggle-bar"></span>
+		</button>
+
+		<ul class="nav__menu" id="nav-menu">
+			{
+				navLinks.map((link) => (
+					<li>
+						<a
+							href={link.href}
+							class:list={[
+								'nav__link',
+								{
+									'nav__link--active':
+										!link.external &&
+										!link.mailto &&
+										(link.href === '/'
+											? currentPath === '/'
+											: currentPath.startsWith(link.href)),
+								},
+							]}
+							target={link.external ? '_blank' : undefined}
+							rel={link.external ? 'noopener noreferrer' : undefined}
+						>
+							{link.label}
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</nav>
+</header>
+
+<style>
+	.nav-header {
+		position: sticky;
+		top: 0;
+		z-index: 100;
+		background: var(--color-surface);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.nav {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding-top: var(--space-sm);
+		padding-bottom: var(--space-sm);
+	}
+
+	.nav__brand {
+		font-weight: 600;
+		color: var(--color-text);
+		text-decoration: none;
+		font-size: 0.95rem;
+	}
+
+	.nav__brand:hover {
+		color: var(--color-accent);
+		text-decoration: none;
+	}
+
+	.nav__menu {
+		display: flex;
+		gap: var(--space-md);
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.nav__link {
+		color: var(--color-text-muted);
+		font-size: 0.9rem;
+		text-decoration: none;
+	}
+
+	.nav__link:hover,
+	.nav__link--active {
+		color: var(--color-accent);
+		text-decoration: none;
+	}
+
+	.nav__toggle {
+		display: none;
+		flex-direction: column;
+		gap: 5px;
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: var(--space-xs);
+	}
+
+	.nav__toggle-bar {
+		display: block;
+		width: 22px;
+		height: 2px;
+		background: var(--color-text);
+		border-radius: 1px;
+	}
+
+	@media (max-width: 640px) {
+		.nav__toggle {
+			display: flex;
+		}
+
+		.nav__menu {
+			display: none;
+			position: absolute;
+			top: 100%;
+			left: 0;
+			right: 0;
+			flex-direction: column;
+			gap: 0;
+			background: var(--color-surface);
+			border-bottom: 1px solid var(--color-border);
+			padding: var(--space-sm) var(--space-md);
+		}
+
+		.nav__menu.is-open {
+			display: flex;
+		}
+
+		.nav__link {
+			display: block;
+			padding: var(--space-xs) 0;
+		}
+
+		.nav-header {
+			position: relative;
+		}
+
+		.nav-header:has(.nav__menu.is-open) {
+			position: sticky;
+		}
+	}
+</style>
+
+<script>
+	document.querySelectorAll('.nav__toggle').forEach((toggle) => {
+		toggle.addEventListener('click', () => {
+			const menu = document.getElementById('nav-menu');
+			const expanded = toggle.getAttribute('aria-expanded') === 'true';
+			toggle.setAttribute('aria-expanded', String(!expanded));
+			menu?.classList.toggle('is-open', !expanded);
+		});
+	});
+</script>
