@@ -80,10 +80,11 @@ const currentPath = Astro.url.pathname;
 	}
 
 	.nav__brand {
-		font-weight: 600;
+		font-family: var(--font-heading);
+		font-weight: 700;
 		color: var(--color-text);
 		text-decoration: none;
-		font-size: 0.95rem;
+		font-size: 1.125rem;
 	}
 
 	.nav__brand:hover {
@@ -100,8 +101,10 @@ const currentPath = Astro.url.pathname;
 	}
 
 	.nav__link {
+		font-family: var(--font-heading);
+		font-weight: 700;
 		color: var(--color-text-muted);
-		font-size: 0.9rem;
+		font-size: 1.125rem;
 		text-decoration: none;
 	}
 

@@ -7,13 +7,15 @@ dateEnd: "2024.7.14"
 tags: ["Team Project"]
 featured: false
 heroImage: "/images/games/puzzle-game/hero.png"
+intro:
+  - "The Puzzle Game is a 2D board-style puzzle game where players switch between characters to solve spatial challenges and reach the exit."
+  - "Supporting characters act as movable elements in the environment, helping to manipulate obstacles and unlock solutions."
+  - "The key is to use fewer steps to solve the puzzles!"
+projectMeta:
+  time: "2024.3.12 – 2024.7.14"
+  role: "Programmer, Co-Designer"
+  tools: "Unity · Visual Studio Code"
 ---
-
-The Puzzle Game is a 2D board-style puzzle game where players switch between characters to solve spatial challenges and reach the exit.
-
-Supporting characters act as movable elements in the environment, helping to manipulate obstacles and unlock solutions.
-
-The key is to use fewer steps to solve the puzzles!
 
 ## Gameplay Demonstration
 
@@ -26,22 +28,47 @@ The key is to use fewer steps to solve the puzzles!
   ></iframe>
 </div>
 
-![Level selection](/images/games/puzzle-game/01.png)
-![Gameplay](/images/games/puzzle-game/02.png)
-![Gameplay](/images/games/puzzle-game/03.png)
-![Level selection UI](/images/games/puzzle-game/04.png)
-![Gameplay](/images/games/puzzle-game/05.png)
-![Gameplay](/images/games/puzzle-game/06.png)
+<div class="story-block story-block--responsibilities">
+  <div class="responsibilities__header">
+    <h2 class="responsibilities__title">Summary of Responsibilities</h2>
+    <p class="responsibilities__intro">I handled all of the programming work, including:</p>
+  </div>
 
-**Time:** 2024.3.12 – 2024.7.14  
-**Role:** Programmer, Co-Designer  
-**Tools:** Unity · Visual Studio Code
+  <div class="responsibility-row">
+    <div class="responsibility-row__figure">
+      <img src="/images/games/puzzle-game/04.png" alt="Movement algorithm diagram" />
+    </div>
+    <div class="responsibility-row__aside">
+      <img class="responsibility-row__thumb" src="/images/games/puzzle-game/02.png" alt="Gameplay screenshot" />
+      <p>I designed and implemented the board grid and the core grid-based movement logic.</p>
+    </div>
+  </div>
 
-## Summary of Responsibilities
+  <div class="responsibility-row">
+    <div class="responsibility-row__figure">
+      <img src="/images/games/puzzle-game/05.png" alt="Game state and undo diagram" />
+    </div>
+    <div class="responsibility-row__aside">
+      <p>I designed the data and class structure of the game, implementing a core game state.</p>
+    </div>
+  </div>
 
-I handled all of the programming work, including:
+  <div class="responsibility-row">
+    <div class="responsibility-row__figure">
+      <img src="/images/games/puzzle-game/06.png" alt="Save system and level selection diagram" />
+    </div>
+    <div class="responsibility-row__aside">
+      <img class="responsibility-row__thumb" src="/images/games/puzzle-game/03.png" alt="Level systems illustration" />
+      <p>I built the save-and-load system, the level selection system, and the star rating system.</p>
+    </div>
+  </div>
 
-- Designed and implemented the board grid and the core grid-based movement logic.
-- Designed the data and class structure of the game, implementing a core game state.
-- Built the save-and-load system, the level selection system, and the star rating system.
-- Built a level editor prototype for Crealer—the designer, so he can easily create and test new levels. We also have plans to open it to players in the future.
+  <div class="responsibility-row">
+    <div class="responsibility-row__figure">
+      <img src="/images/games/puzzle-game/01.png" alt="Level editor screenshot" />
+    </div>
+    <div class="responsibility-row__aside">
+      <p>I built a level editor prototype for Crealer—the designer, so he can easily create and test new levels. We also have plans to open it to players in the future.</p>
+    </div>
+  </div>
+</div>

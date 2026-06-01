@@ -16,53 +16,97 @@ interface Props {
 }
 
 const { game } = Astro.props;
-const { title, summary, dateStart, dateEnd, tags, heroImage, externalLinks } =
-	game.data;
+const {
+	title,
+	summary,
+	dateStart,
+	dateEnd,
+	tags,
+	heroImage,
+	externalLinks,
+	intro,
+	projectMeta,
+} = game.data;
 const period = dateEnd ? `${dateStart} – ${dateEnd}` : dateStart;
+const introParagraphs =
+	intro && intro.length > 0 ? intro : summary ? [summary] : [];
 const { Content } = await render(game);
 ---
 
-<PageLayout title={title} description={summary} narrow>
+<PageLayout title={title} description={summary} bodyClass="page-theme--project">
 	<nav class="breadcrumb" aria-label="Breadcrumb">
 		<a href="/projects">← Projects</a>
 	</nav>
 
-	<header class="project-header">
+	<header class="project-header project-header--split">
 		{
 			heroImage && (
-				<div class="project-header__hero">
-					<img src={heroImage} alt="" loading="eager" />
+				<div class="project-header__hero project-header__hero--shaped">
+					<img src={heroImage} alt={title} loading="eager" />
 				</div>
 			)
 		}
-		<h1>{title}</h1>
-		<p class="project-header__period">{period}</p>
-		{
-			tags.length > 0 && (
-				<ul class="project-header__tags">
-					{tags.map((tag) => (
-						<li>{tag}</li>
-					))}
-				</ul>
-			)
-		}
-		<p class="project-header__summary">{summary}</p>
-		{
-			externalLinks && externalLinks.length > 0 && (
-				<ul class="project-header__links">
-					{externalLinks.map((link) => (
-						<li>
-							<a href={link.url} target="_blank" rel="noopener noreferrer">
-								{link.label} →
-							</a>
-						</li>
-					))}
-				</ul>
-			)
-		}
+		<div class="project-header__split">
+			<div class="project-header__intro">
+				{introParagraphs.map((paragraph) => <p>{paragraph}</p>)}
+			</div>
+			<div class="project-header__meta">
+				{
+					projectMeta?.time ? (
+						<p>
+							<strong>Time:</strong> {projectMeta.time}
+						</p>
+					) : (
+						<p>
+							<strong>Time:</strong> {period}
+						</p>
+					)
+				}
+				{
+					projectMeta?.role && (
+						<p>
+							<strong>Role:</strong> {projectMeta.role}
+						</p>
+					)
+				}
+				{
+					projectMeta?.tools && (
+						<p>
+							<strong>Tools:</strong> {projectMeta.tools}
+						</p>
+					)
+				}
+				{
+					tags.length > 0 && (
+						<ul class="project-header__tags">
+							{tags.map((tag) => (
+								<li>{tag}</li>
+							))}
+						</ul>
+					)
+				}
+				{
+					externalLinks && externalLinks.length > 0 && (
+						<ul class="project-header__links">
+							{externalLinks.map((link) => (
+								<li>
+									<a
+										href={link.url}
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										{link.label} →
+									</a>
+								</li>
+							))}
+						</ul>
+					)
+				}
+			</div>
+		</div>
 	</header>
 
-	<Prose>
+	<Prose largeHeadings>
 		<Content />
 	</Prose>
 </PageLayout>
@@ -77,27 +121,12 @@ const { Content } = await render(game);
 		margin-bottom: var(--space-lg);
 	}
 
-	.project-header__hero {
-		margin: 0 calc(-1 * var(--space-md)) var(--space-md);
-		border-radius: var(--radius);
-		overflow: hidden;
-		background: var(--color-border);
-	}
-
-	.project-header__hero img {
+	.project-header--split {
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
 		width: 100%;
-		max-height: 360px;
-		object-fit: cover;
-	}
-
-	.project-header h1 {
-		margin-top: 0;
-	}
-
-	.project-header__period {
-		margin: 0 0 var(--space-sm);
-		font-size: 0.9rem;
-		color: var(--color-text-muted);
+		margin-bottom: var(--space-xl);
 	}
 
 	.project-header__tags {
@@ -118,11 +147,6 @@ const { Content } = await render(game);
 		color: var(--color-text-muted);
 	}
 
-	.project-header__summary {
-		font-size: 1.05rem;
-		line-height: 1.6;
-	}
-
 	.project-header__links {
 		list-style: none;
 		margin: var(--space-md) 0 0;
@@ -134,5 +158,57 @@ const { Content } = await render(game);
 
 	.project-header__links a {
 		font-weight: 500;
+	}
+
+	.project-header__hero--shaped {
+		width: 100%;
+		margin: 0 0 var(--space-md);
+		overflow: hidden;
+		border-radius: var(--radius);
+	}
+
+	.project-header__hero--shaped img {
+		display: block;
+		width: 100%;
+		height: auto;
+		max-height: 66vh;
+	}
+
+	.project-header__split {
+		width: 100%;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: var(--space-lg);
+		align-items: start;
+	}
+
+	.project-header__intro p {
+		margin: 0 0 var(--space-sm);
+		line-height: 1.65;
+	}
+
+	.project-header__intro p:last-child {
+		margin-bottom: 0;
+	}
+
+	.project-header__meta p {
+		margin: 0 0 var(--space-xs);
+		font-size: 0.95rem;
+		line-height: 1.5;
+	}
+
+	.project-header__meta .project-header__tags {
+		margin-top: var(--space-sm);
+	}
+
+	@media (max-width: 768px) {
+		.project-header__hero--shaped img {
+			max-height: 50vh;
+		}
+
+		.project-header__split {
+			grid-template-columns: 1fr;
+			gap: var(--space-md);
+		}
 	}
 </style>

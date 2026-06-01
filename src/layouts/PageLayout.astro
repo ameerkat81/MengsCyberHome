@@ -5,12 +5,13 @@ interface Props {
 	title: string;
 	description?: string;
 	narrow?: boolean;
+	bodyClass?: string;
 }
 
-const { title, description, narrow = false } = Astro.props;
+const { title, description, narrow = false, bodyClass } = Astro.props;
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} bodyClass={bodyClass}>
 	<div class:list={['container', { 'container--narrow': narrow }]}>
 		<slot name="header" />
 		<slot />

@@ -4,8 +4,17 @@ import ExperienceItem from '../../components/ExperienceItem.astro';
 import GameCard from '../../components/GameCard.astro';
 import PageLayout from '../../layouts/PageLayout.astro';
 
-const games = (await getCollection('games')).sort((a, b) =>
-	b.data.dateStart.localeCompare(a.data.dateStart),
+const projectOrder = [
+	'jacks-magic-bean',
+	'cycle-of-delivery',
+	'puzzle-game',
+	'mask-off',
+	'bobos-bubble',
+	'jacks-magic-bean-2d',
+];
+
+const games = (await getCollection('games')).sort(
+	(a, b) => projectOrder.indexOf(a.id) - projectOrder.indexOf(b.id),
 );
 
 const experience = (await getCollection('experience')).sort(

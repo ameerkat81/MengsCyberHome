@@ -21,6 +21,15 @@ const games = defineCollection({
 				}),
 			)
 			.optional(),
+		headerLayout: z.enum(['default', 'split-hero']).default('split-hero'),
+		intro: z.array(z.string()).optional(),
+		projectMeta: z
+			.object({
+				time: z.string().optional(),
+				role: z.string().optional(),
+				tools: z.string().optional(),
+			})
+			.optional(),
 	}),
 });
 
