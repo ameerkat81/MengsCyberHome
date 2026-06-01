@@ -28,7 +28,7 @@ const { href, title, description } = Astro.props;
 
 	.entry-card:hover {
 		border-color: var(--color-accent);
-		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+		box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
 		text-decoration: none;
 		color: inherit;
 	}
@@ -38,7 +38,7 @@ const { href, title, description } = Astro.props;
 		font-weight: 600;
 		font-size: 1.125rem;
 		margin-bottom: var(--space-xs);
-		color: var(--color-text);
+		color: var(--color-heading);
 	}
 
 	.entry-card:hover .entry-card__title {
@@ -47,7 +47,7 @@ const { href, title, description } = Astro.props;
 
 	.entry-card__desc {
 		display: block;
-		font-size: 0.9rem;
+		font-size: var(--font-size-meta);
 		color: var(--color-text-muted);
 		line-height: 1.5;
 	}

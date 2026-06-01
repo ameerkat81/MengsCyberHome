@@ -48,7 +48,7 @@ const period = dateEnd ? `${dateStart} – ${dateEnd}` : dateStart;
 
 	.game-card:hover {
 		border-color: var(--color-accent);
-		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+		box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
 	}
 
 	.game-card__link {
@@ -89,7 +89,7 @@ const period = dateEnd ? `${dateStart} – ${dateEnd}` : dateStart;
 
 	.game-card__summary {
 		margin: 0 0 var(--space-sm);
-		font-size: 0.9rem;
+		font-size: var(--font-size-meta);
 		color: var(--color-text-muted);
 		line-height: 1.5;
 	}
@@ -104,21 +104,22 @@ const period = dateEnd ? `${dateStart} – ${dateEnd}` : dateStart;
 	}
 
 	.game-card__tags li {
-		font-size: 0.75rem;
+		font-size: var(--font-size-sm);
 		padding: 0.15rem 0.5rem;
 		background: var(--color-bg);
+		border: 1px solid var(--color-border);
 		border-radius: var(--radius);
 		color: var(--color-text-muted);
 	}
 
 	.game-card__meta {
 		margin: 0 0 var(--space-xs);
-		font-size: 0.85rem;
+		font-size: var(--font-size-sm);
 		color: var(--color-text-muted);
 	}
 
 	.game-card__cta {
-		font-size: 0.9rem;
+		font-size: var(--font-size-meta);
 		color: var(--color-accent);
 	}
 </style>

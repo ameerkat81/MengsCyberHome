@@ -1,13 +1,16 @@
 :root {
-	--color-bg: #fef9e7;
-	--color-surface: #fef9e7;
-	--color-text: #1a1a1a;
-	--color-text-muted: #666666;
-	--color-accent: #3d6b8e;
-	--color-accent-hover: #2d5470;
-	--color-border: #e8dfc8;
+	--color-bg: #2d2d2d;
+	--color-surface: #2d2d2d;
+	--color-heading: #d4d4d4;
+	--color-text: #b0b0b0;
+	--color-text-muted: #888888;
+	--color-accent: #78b3d6;
+	--color-accent-hover: #98c9e8;
+	--color-border: #444444;
 	--font-sans: 'Nunito Sans', sans-serif;
 	--font-heading: 'Sansita', sans-serif;
+	--font-size-sm: 0.9375rem;
+	--font-size-meta: 1rem;
 	--max-width-narrow: 720px;
 	--max-width-blog: 590px;
 	--max-width-wide: 960px;
@@ -17,7 +20,7 @@
 	--space-md: 1.5rem;
 	--space-lg: 2.5rem;
 	--space-xl: 4rem;
-	--radius: 6px;
+	--radius: 8px;
 }
 
 *,
@@ -29,7 +32,7 @@
 html {
 	font-family: var(--font-sans);
 	font-size: 16px;
-	line-height: 1.6;
+	line-height: 1.62;
 	color: var(--color-text);
 	background: var(--color-bg);
 	-webkit-font-smoothing: antialiased;
@@ -61,6 +64,7 @@ h2,
 h3,
 h4 {
 	font-family: var(--font-heading);
+	color: var(--color-heading);
 	line-height: 1.25;
 	font-weight: 700;
 }
@@ -264,7 +268,7 @@ ol {
 
 .prose .subsection__caption {
 	margin: var(--space-xs) 0 0;
-	font-size: 0.875rem;
+	font-size: var(--font-size-meta);
 	line-height: 1.4;
 	color: var(--color-text-muted);
 	text-align: center;
