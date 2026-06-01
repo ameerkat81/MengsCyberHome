@@ -8,10 +8,11 @@ interface Props {
 }
 
 const { entry } = Astro.props;
-const { title, date } = entry.data;
+const { title, date, sourceUrl, sourceLabel } = entry.data;
 const { Content } = await render(entry);
 
 const dateLabel = date.toLocaleDateString('en-CA');
+const sourceLinkLabel = sourceLabel ?? '原文';
 ---
 
 <article class="blog-post">
@@ -22,7 +23,7 @@ const dateLabel = date.toLocaleDateString('en-CA');
 
 	<div class="blog-post__content-wrap">
 		<div class="blog-post__body">
-			<Prose>
+			<Prose blog>
 				<Content />
 			</Prose>
 		</div>
@@ -32,12 +33,25 @@ const dateLabel = date.toLocaleDateString('en-CA');
 	<button class="blog-post__toggle" type="button" hidden>
 		展开全文
 	</button>
+
+	{
+		sourceUrl && (
+			<p class="blog-post__source">
+				<a href={sourceUrl} target="_blank" rel="noopener noreferrer">
+					{sourceLinkLabel}
+				</a>
+			</p>
+		)
+	}
 </article>
 
 <style>
 	.blog-post {
 		padding-bottom: var(--space-lg);
 		border-bottom: 1px solid var(--color-border);
+		max-width: var(--max-width-blog);
+		margin-left: auto;
+		margin-right: auto;
 	}
 
 	.blog-post:last-child {
@@ -104,5 +118,21 @@ const dateLabel = date.toLocaleDateString('en-CA');
 
 	.blog-post__toggle:hover {
 		color: var(--color-accent-hover);
+	}
+
+	.blog-post__source {
+		margin: var(--space-sm) 0 0;
+		font-size: 0.85rem;
+		color: var(--color-text-muted);
+	}
+
+	.blog-post__source a {
+		color: var(--color-text-muted);
+		text-decoration: underline;
+		text-underline-offset: 2px;
+	}
+
+	.blog-post__source a:hover {
+		color: var(--color-accent);
 	}
 </style>

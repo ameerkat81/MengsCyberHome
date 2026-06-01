@@ -1,0 +1,13 @@
+# 豆瓣帖子链接列表（每行一个 URL，# 开头为注释）
+#
+# 使用前在 PowerShell 中设置 Cookie（从已登录浏览器复制）：
+#   $env:DOUBAN_COOKIE = "bid=xxx; dbcl2=xxx; ..."
+#
+# 运行导入：
+#   npm run import:douban -- --file scripts/douban-urls.txt
+#
+# 追加更多链接后再次运行会自动跳过已导入的帖子；加 --force 可覆盖。
+
+https://www.douban.com/topic/484968291/
+https://www.douban.com/topic/485169313/
+https://www.douban.com/topic/485658462/

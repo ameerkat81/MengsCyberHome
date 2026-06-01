@@ -1,12 +1,13 @@
 ---
 interface Props {
 	largeHeadings?: boolean;
+	blog?: boolean;
 }
 
-const { largeHeadings = false } = Astro.props;
+const { largeHeadings = false, blog = false } = Astro.props;
 ---
 
-<div class:list={['prose', { 'prose--large-headings': largeHeadings }]}>
+<div class:list={['prose', { 'prose--large-headings': largeHeadings, 'prose--blog': blog }]}>
 	<slot />
 </div>
 
@@ -49,5 +50,55 @@ const { largeHeadings = false } = Astro.props;
 		border: 1px solid var(--color-border);
 		border-radius: var(--radius);
 		font-size: 0.85rem;
+	}
+
+	.prose--blog :global(h2) {
+		font-size: 1.125rem;
+		margin-top: var(--space-lg);
+		margin-bottom: var(--space-sm);
+	}
+
+	.prose--blog :global(h3) {
+		font-size: 1rem;
+		margin-top: var(--space-md);
+		margin-bottom: var(--space-xs);
+	}
+
+	.prose--blog :global(p:has(> img)) {
+		text-align: center;
+		margin: var(--space-md) 0 var(--space-xs);
+	}
+
+	.prose--blog :global(p:has(> img) img) {
+		display: inline-block;
+		max-width: 100%;
+		margin: 0 auto;
+	}
+
+	.prose--blog :global(p:has(> img) + p) {
+		text-align: center;
+		font-size: 0.8125rem;
+		line-height: 1.5;
+		color: var(--color-text-muted);
+		margin-top: 0;
+		margin-bottom: var(--space-md);
+	}
+
+	.prose--blog :global(.blog-figure) {
+		margin: var(--space-md) 0 var(--space-md);
+		text-align: center;
+	}
+
+	.prose--blog :global(.blog-figure img) {
+		display: inline-block;
+		max-width: 100%;
+		margin: 0 auto;
+	}
+
+	.prose--blog :global(.blog-figure figcaption) {
+		margin-top: var(--space-xs);
+		font-size: 0.8125rem;
+		line-height: 1.5;
+		color: var(--color-text-muted);
 	}
 </style>

@@ -9,12 +9,14 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "import:douban": "node scripts/import-douban-topic.mjs"
   },
   "dependencies": {
     "astro": "^6.4.2"
   },
   "devDependencies": {
+    "cheerio": "^1.0.0",
     "wrangler": "^4.95.0"
   }
 }

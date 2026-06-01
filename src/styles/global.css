@@ -1,14 +1,15 @@
 :root {
-	--color-bg: #fafafa;
-	--color-surface: #ffffff;
+	--color-bg: #fef9e7;
+	--color-surface: #fef9e7;
 	--color-text: #1a1a1a;
 	--color-text-muted: #666666;
 	--color-accent: #3d6b8e;
 	--color-accent-hover: #2d5470;
-	--color-border: #e8e8e8;
+	--color-border: #e8dfc8;
 	--font-sans: 'Nunito Sans', sans-serif;
 	--font-heading: 'Sansita', sans-serif;
 	--max-width-narrow: 720px;
+	--max-width-blog: 590px;
 	--max-width-wide: 960px;
 	--max-width-content: 1080px;
 	--space-xs: 0.5rem;

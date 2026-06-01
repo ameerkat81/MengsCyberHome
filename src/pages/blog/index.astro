@@ -11,9 +11,8 @@ const posts = (await getCollection('blog')).sort(
 <PageLayout
 	title="Blog"
 	description="Diary entries on games, code, and life."
+	bodyClass="page-blog"
 >
-	<h1>Blog</h1>
-
 	{
 		posts.length > 0 ? (
 			<div class="blog-feed">
@@ -69,11 +68,6 @@ const posts = (await getCollection('blog')).sort(
 </script>
 
 <style>
-	h1 {
-		margin-top: 0;
-		margin-bottom: var(--space-lg);
-	}
-
 	.blog-feed {
 		display: flex;
 		flex-direction: column;
