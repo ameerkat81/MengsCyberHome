@@ -4,9 +4,6 @@ date: 2026-06-23
 sourceUrl: "https://www.douban.com/topic/491663933/"
 sourceLabel: "豆瓣"
 ---
-接上文
-
-[尼泊尔PoonHill+ABC+Mardi徒步记录（四）接上篇 尼泊尔PoonHill+ABC+Mardi徒步记录（三） 前往MBC(4.9) 这天...转载自：ameerkat](https://www.douban.com/topic/490630859/?_spm_id=MTI1NDcxMzAz)
 ![](/images/blog/491663933/p736201886.jpg)
 
 等待日出的两人和他们的向导

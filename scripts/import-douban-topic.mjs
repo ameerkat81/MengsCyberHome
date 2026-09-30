@@ -145,7 +145,7 @@ function stripSeriesNav(markdown) {
 
 	// Douban prev/next links, often multiline with a preview ending in 转载自
 	result = result.replace(
-		/(?:^|\n|\s)(?:接上文|接上篇|上一篇|下一篇)[：:]\s*\[[\s\S]*?\]\(\s*https?:\/\/www\.douban\.com\/topic\/\d+[^)]*\)/g,
+		/(?:^|\n|\s)(?:接上文|接上篇|上一篇|下一篇)[：:]?\s*\[[\s\S]*?\]\(\s*https?:\/\/www\.douban\.com\/topic\/\d+[^)]*\)/g,
 		(m) => (m.startsWith('\n') ? '\n' : ''),
 	);
 
@@ -153,7 +153,7 @@ function stripSeriesNav(markdown) {
 	result = result.replace(/\n?\s*未完待续[…\.]+[\s\S]*$/u, '');
 
 	// Orphan nav labels
-	result = result.replace(/^(?:上一篇|下一篇)[：:]\s*$/gm, '');
+	result = result.replace(/^(?:接上文|接上篇|上一篇|下一篇)[：:]?\s*$/gm, '');
 	result = result.replace(/\n-{2,}\s*$/g, '');
 
 	return result.replace(/\n{3,}/g, '\n\n').trim();

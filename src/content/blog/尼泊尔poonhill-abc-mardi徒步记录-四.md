@@ -4,9 +4,6 @@ date: 2026-06-12
 sourceUrl: "https://www.douban.com/topic/490630859/"
 sourceLabel: "豆瓣"
 ---
-接上篇
-
-[尼泊尔PoonHill+ABC+Mardi徒步记录（三）接上篇： 尼泊尔PoonHill+ABC+Mardi徒步记录（二） Poon Hill -> ABC(...转载自：ameerkat](https://www.douban.com/topic/485658462/?_spm_id=MTI1NDcxMzAz)
 #### 前往MBC(4.9)
 
 这天早上，天空果然放晴了。
