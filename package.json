@@ -10,13 +10,15 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "import:douban": "node scripts/import-douban-topic.mjs"
+    "import:douban": "node scripts/import-douban-topic.mjs",
+    "compress:images": "node scripts/compress-blog-images.mjs"
   },
   "dependencies": {
     "astro": "^6.4.2"
   },
   "devDependencies": {
     "cheerio": "^1.0.0",
+    "sharp": "^0.35.5",
     "wrangler": "^4.95.0"
   }
 }
