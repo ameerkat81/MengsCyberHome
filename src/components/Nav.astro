@@ -19,7 +19,10 @@ const currentPath = Astro.url.pathname;
 
 <header class="nav-header">
 	<nav class="nav container" aria-label="Main navigation">
-		<a href="/" class="nav__brand">XueMeng Geng</a>
+		<a href="/" class="nav__brand">
+			<img src="/logo.svg" alt="" class="nav__logo" width="32" height="32" />
+			XueMeng Geng
+		</a>
 
 		<button
 			class="nav__toggle"
@@ -80,11 +83,22 @@ const currentPath = Astro.url.pathname;
 	}
 
 	.nav__brand {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--space-sm);
 		font-family: var(--font-heading);
 		font-weight: 700;
 		color: var(--color-heading);
 		text-decoration: none;
 		font-size: 1.125rem;
+	}
+
+	.nav__logo {
+		display: block;
+		width: 32px;
+		height: 32px;
+		margin: 0;
+		border-radius: 0;
 	}
 
 	.nav__brand:hover {
