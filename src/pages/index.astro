@@ -12,15 +12,12 @@ import PageLayout from '../layouts/PageLayout.astro';
 			<div class="intro__aside">
 				<img
 					src="/images/avatar.jpg"
-					alt="Quirrel figurine from Hollow Knight"
+					alt="méng sipping a latte at a café, wearing a cap and headphones"
 					class="intro__avatar"
-					width="160"
-					height="160"
+					width="192"
+					height="192"
 					loading="eager"
 				/>
-				<p class="intro__tagline">
-					Meet my mentor, <strong>Quirrel</strong>
-				</p>
 			</div>
 			<div class="intro__text">
 				<h1>Hi! Welcome to my cyber cabin!</h1>
@@ -86,28 +83,16 @@ import PageLayout from '../layouts/PageLayout.astro';
 		align-items: center;
 		gap: var(--space-sm);
 		flex-shrink: 0;
-		width: 10rem;
+		width: 12rem;
+		order: 1;
 	}
 
 	.intro__avatar {
-		width: 10rem;
-		height: 10rem;
+		width: 12rem;
+		height: 12rem;
 		object-fit: cover;
 		border-radius: var(--radius);
 		margin: 0;
-	}
-
-	.intro__tagline {
-		font-size: var(--font-size-meta);
-		color: var(--color-text-muted);
-		margin: 0;
-		line-height: 1.5;
-		text-align: center;
-	}
-
-	.intro__tagline strong {
-		color: var(--color-heading);
-		font-weight: 600;
 	}
 
 	.intro__text h1 {
@@ -123,6 +108,10 @@ import PageLayout from '../layouts/PageLayout.astro';
 		.intro__lead {
 			flex-direction: column;
 			align-items: center;
+		}
+
+		.intro__aside {
+			order: 0;
 		}
 
 		.intro__text h1 {
