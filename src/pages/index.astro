@@ -58,6 +58,12 @@ import PageLayout from '../layouts/PageLayout.astro';
 				title="Blog"
 				description="Thoughts and journal entries."
 			/>
+			<HomeEntryCard
+				href="https://thedebbies.bandcamp.com/"
+				title="Music"
+				description="My band back in Beijing. I can never forget those days with these two girls."
+				external
+			/>
 		</div>
 	</section>
 </PageLayout>
@@ -133,6 +139,12 @@ import PageLayout from '../layouts/PageLayout.astro';
 	@media (min-width: 520px) {
 		.entries__grid {
 			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	@media (min-width: 720px) {
+		.entries__grid {
+			grid-template-columns: repeat(3, 1fr);
 		}
 	}
 </style>

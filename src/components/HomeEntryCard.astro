@@ -3,15 +3,20 @@ interface Props {
 	href: string;
 	title: string;
 	description: string;
+	external?: boolean;
 }
 
-const { href, title, description } = Astro.props;
+const { href, title, description, external = false } = Astro.props;
 ---
 
-<a href={href} class="entry-card">
+<a
+	href={href}
+	class="entry-card"
+	{...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+>
 	<span class="entry-card__title">{title}</span>
 	<span class="entry-card__desc">{description}</span>
-	<span class="entry-card__arrow" aria-hidden="true">→</span>
+	<span class="entry-card__arrow" aria-hidden="true">{external ? '↗' : '→'}</span>
 </a>
 
 <style>
