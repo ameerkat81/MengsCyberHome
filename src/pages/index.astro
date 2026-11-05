@@ -52,6 +52,9 @@ import PageLayout from '../layouts/PageLayout.astro';
 				href="/projects"
 				title="Game Projects"
 				description="Personal and team games, prototypes, and professional experience."
+				image="/images/explore/usc-games-room.jpg"
+				imageLayout="cover"
+				wide
 			/>
 			<HomeEntryCard
 				href="/blog"
@@ -133,20 +136,12 @@ import PageLayout from '../layouts/PageLayout.astro';
 		font-size: 1.25rem;
 	}
 
+	/* Column count follows the available width; dense flow backfills gaps left by wide cards */
 	.entries__grid {
+		container-type: inline-size;
 		display: grid;
 		gap: var(--space-md);
-	}
-
-	@media (min-width: 520px) {
-		.entries__grid {
-			grid-template-columns: 1fr 1fr;
-		}
-	}
-
-	@media (min-width: 720px) {
-		.entries__grid {
-			grid-template-columns: repeat(3, 1fr);
-		}
+		grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+		grid-auto-flow: dense;
 	}
 </style>
